@@ -13,6 +13,7 @@
 	</bean>
 	
 	<!-- download  -->
+	<!-- 
 	<bean id="downloadView" class="mul.cam.food.util.DownloadView"/>
 	
 	<bean id="downloadViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
@@ -20,7 +21,7 @@
 			<value>0</value>
 		</property>
 	</bean>
-	
+	 -->
 	
 	</beans>
 	
