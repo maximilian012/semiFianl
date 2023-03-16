@@ -135,11 +135,12 @@
          
          <!-- 댓글 입력 -->
          	<h3 class="pb-4 mb-4 fst-italic border-bottom">댓글 입력하기</h3>
-		    <form action="commentWriteAf.do" method="post" id="comment">
+		    <form action="commentWriteAf.do" method="post">
 			    <dl>
 		          <dt><%=dto.getWriter() %></dt>
 		          <dd>
-		          	<textarea rows="10" cols="100"></textarea>
+		          	<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
+		          	<textarea rows="10" cols="100"><%=dto.getContent() %></textarea>
 		          </dd>
 	        	</dl>
 		    
@@ -172,7 +173,6 @@
 						$.each(list, function(index, item){
 							let str = "<div>"
 									+	"<td>작성자:" + item.writer + "</td>"
-									+	"<td>작성일:" + item.regdate + "</td>"
 									+ "</div>"
 									+ "<div>"
 									+	"<td>" + item.content + "</td>"
