@@ -8,7 +8,7 @@ public interface MemberService {
 
 	List<MemberDto> allMember();
 	
-	boolean idCheck(String id);
+	boolean idCheck(String user_id);
 	
 	boolean addMember(MemberDto dto);
 	

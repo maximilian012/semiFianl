@@ -1,5 +1,13 @@
 package mul.cam.food.dto;
 
+/*
+ 	create table category (
+	seq int auto_increment primary key,
+    name varchar(50) not null
+);
+ 
+ */
+
 public class BbsCategory {
 
 	private int number;

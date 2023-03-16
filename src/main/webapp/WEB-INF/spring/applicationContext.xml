@@ -11,10 +11,8 @@
 	<bean id="propertiyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-			
 				<value>classpath:properties/jdbc.properties</value> <!--이 경로 읽어와라  -->
 			</list>
-		
 		</property>
 	</bean>		
 	
@@ -36,8 +34,7 @@
 	<!-- mybatis 설정 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:sqls/*.xml" />
-	
+		<property name="mapperLocations" value="classpath:sqls/*.xml"/>
 	</bean>
 	
 	<!-- sqlsession 취득  sqlsession이란?    Mybatis를 이용하여 DAO를 구현하려면 SqlSession 객체가 필요하다.
@@ -59,16 +56,14 @@
 				  커밋하거나 롤백하는 것을 포함한 세션의 생명주기를 관리한다. 또한 마이바티스 예외를 스프링의 DataAccessException로 변환하는 작업또한 처리한다.
 		    
 	 -->
-	<bean id="sqlsession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
-		<constructor-arg index="1" value="SIMPLE"></constructor-arg>
-		
-	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>
+		<constructor-arg index="1" value="SIMPLE"/>
 	</bean>
-	<!-- jdbc -->
+	
+	<!-- jdbc 설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
-	
+		<property name="dataSource" ref="dataSource"/>
 	</bean>
-	
+
 </beans>

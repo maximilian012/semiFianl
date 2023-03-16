@@ -103,12 +103,12 @@ if(list == null || list.size() == 0){
 	for(int i = 0;i < list.size(); i++)
 	{
 		BbsDto dto = list.get(i);
-		%>
+%>
 		<tr>
 			<th><%=i + 1 + (pageNumber * 10) %></th>
 			
 			<td style="text-align: left;">
-			<%
+<%-- 			<%
 			if(dto.getDel() == 0){
 				%>
 					<%=Utility.arrow(dto.getDepth()) %>
@@ -125,10 +125,11 @@ if(list == null || list.size() == 0){
 			%>
 			</td>
 			
-			<td><%=dto.getReadcount() %></td>
-			<td><%=dto.getId() %></td>
+			<td><%=dto.getReadcount() %></td> --%>
+			<td><%=dto.getWriter() %></td>
 		</tr>
-		<%
+		<% 
+
 	}
 }
 %>

@@ -233,6 +233,10 @@ tr pre{
     color: #FFD26F;
 }
 
+.wrapper {
+	text-align: right;
+}
+
 /* 푸터 */
 footer {
     width: 100%;

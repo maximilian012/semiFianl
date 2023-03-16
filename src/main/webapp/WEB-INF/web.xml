@@ -30,7 +30,7 @@
 		</init-param>
 
 		<load-on-startup>1</load-on-startup><!-- 이걸 제일먼저 읽어라 -->
-
+		<!-- <async-supported>true</async-supported> -->
 	</servlet>
 
 	<servlet-mapping>

@@ -39,10 +39,10 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value = "idcheck.do", method = RequestMethod.POST)
-	public String idcheck(String id) {
+	public String idcheck(String user_id) {
 	//	System.out.println("MemberController idcheck " + new Date());
 		
-		boolean isS = service.idCheck(id);
+		boolean isS = service.idCheck(user_id);
 		if(isS == true) {	// id가 있음
 			return "NO";
 		}
@@ -65,26 +65,26 @@ public class MemberController {
 		
 		return "message";
 	}
-	
-	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
-	public String login(HttpServletRequest req, Model model, MemberDto dto) {
-	//	System.out.println("MemberController login " + new Date());
-		
-		MemberDto mem = service.login(dto);
-		String msg = "";
-		if(mem != null) {	// login 성공
-			req.getSession().setAttribute("login", mem);
-		//	req.getSession().setMaxInactiveInterval(60 * 2);
-			
-			msg = "LOGIN_OK";
-		}else {				// login 실패
-			msg = "LOGIN_FAIL";
-		}
-		model.addAttribute("login", msg);
-		
-		return "message";
-	}
-	
+
+
+	  @RequestMapping(value = "loginAf.do", method = RequestMethod.POST) public
+	  	String login(HttpServletRequest req, Model model, MemberDto dto) { //
+		  System.out.println("MemberController login " + new Date());
+	  
+		  MemberDto mem = service.login(dto);
+		  String msg = "";
+		  if(mem != null) { //login 성공 
+			req.getSession().setAttribute("login", mem); //
+			req.getSession().setMaxInactiveInterval(60 * 2);	  
+			  msg = "LOGIN_OK"; }
+		  else { // login 실패 
+			  msg = "LOGIN_FAIL"; 
+		  }
+	  
+	  		model.addAttribute("login", msg);
+	  
+	  	return "message"; }
+	 
 	@RequestMapping(value = "sessionOut.do", method = RequestMethod.GET)
 	public String sessionOut(Model model) {
 		String sessionOut = "logout";

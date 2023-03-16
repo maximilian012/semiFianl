@@ -7,26 +7,32 @@ public class BbsDto implements Serializable{
 
 	private int seq;
 	private String writer;
+	private String thumbnail;
 	private String title;
 	private String content;
 	private String ingredients;
+	private String cookingtime;
+	private String serving;
 	private int category;
 	private String regdate;
 	private double star;
 	private String tag;
 	
 	public BbsDto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public BbsDto(int seq, String writer, String title, String content, String ingredients, int category,
-			String regdate, double star, String tag) {
+	public BbsDto(int seq, String writer, String thumbnail, String title, String content, String ingredients,
+			String cookingtime, String serving, int category, String regdate, double star, String tag) {
 		super();
 		this.seq = seq;
 		this.writer = writer;
+		this.thumbnail = thumbnail;
 		this.title = title;
 		this.content = content;
 		this.ingredients = ingredients;
+		this.cookingtime = cookingtime;
+		this.serving = serving;
 		this.category = category;
 		this.regdate = regdate;
 		this.star = star;
@@ -47,6 +53,14 @@ public class BbsDto implements Serializable{
 
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 
 	public String getTitle() {
@@ -71,6 +85,22 @@ public class BbsDto implements Serializable{
 
 	public void setIngredients(String ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public String getCookingtime() {
+		return cookingtime;
+	}
+
+	public void setCookingtime(String cookingtime) {
+		this.cookingtime = cookingtime;
+	}
+
+	public String getServing() {
+		return serving;
+	}
+
+	public void setServing(String serving) {
+		this.serving = serving;
 	}
 
 	public int getCategory() {
@@ -107,10 +137,11 @@ public class BbsDto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "BbsDto [seq=" + seq + ", writer=" + writer + ", title=" + title + ", content=" + content
-				+ ", ingredients=" + ingredients + ", category=" + category + ", regdate=" + regdate + ", star=" + star
+		return "BbsDto [seq=" + seq + ", writer=" + writer + ", thumbnail=" + thumbnail + ", title=" + title
+				+ ", content=" + content + ", ingredients=" + ingredients + ", cookingtime=" + cookingtime
+				+ ", serving=" + serving + ", category=" + category + ", regdate=" + regdate + ", star=" + star
 				+ ", tag=" + tag + "]";
 	}
-	
 
+	
 }

@@ -2,6 +2,16 @@ package mul.cam.food.dto;
 
 import java.io.Serializable;
 
+/*
+ create table reply (
+	seq int auto_increment primary key,
+    content varchar(2000) not null,
+    writer varchar(50) not null
+); 
+
+alter table reply
+add foreign key(writer) references user(user_id);
+ */
 
 public class BbsComment implements Serializable{
 
