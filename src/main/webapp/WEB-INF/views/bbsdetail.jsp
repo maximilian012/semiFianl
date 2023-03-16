@@ -135,7 +135,7 @@
          
          <!-- 댓글 입력 -->
          	<h3 class="pb-4 mb-4 fst-italic border-bottom">댓글 입력하기</h3>
-		    <form action="post" id="comment">
+		    <form action="commentWriteAf.do" method="post" id="comment">
 			    <dl>
 		          <dt><%=dto.getWriter() %></dt>
 		          <dd>

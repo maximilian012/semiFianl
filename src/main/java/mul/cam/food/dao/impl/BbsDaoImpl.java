@@ -1,5 +1,7 @@
 package mul.cam.food.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,6 +30,10 @@ public class BbsDaoImpl implements BbsDao {
 		return session.insert(ns + "commentWrite", bbs);
 	}
 
+	@Override
+	public List<BbsComment> commentList(int seq) {
+		return session.selectList(ns + "commentList", seq);
+	}
 }
 	
 	

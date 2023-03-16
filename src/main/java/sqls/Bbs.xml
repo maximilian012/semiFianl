@@ -24,10 +24,15 @@
 	</select>
 	
 	<insert id="commentWrite" parameterType="mul.cam.food.dto.BbsComment">
-		insert into reply(seq, content, writer )
+		insert into reply(seq, content, writer)
 		values(#{seq}, #{content}, #{writer})
 	</insert>
 	
+	<select id="commentList" parameterType="Integer" resultType="mul.cam.food.dto.BbsComment">
+		select seq, content, writer
+		from reply
+		where seq=#{seq}
+	</select>
 	
 <!-- 	
 	<update id="updateBbs" parameterType="mul.cam.food.dto.BbsDto">
@@ -37,11 +42,6 @@
 	</update>
 	 
 
-	<select id="commentList" parameterType="Integer" resultType="mul.cam.food.dto.BbsComment">
-		select seq, writer, content
-		from reply
-		where seq=#{seq}
 
-	</select>
  -->	
 </mapper>

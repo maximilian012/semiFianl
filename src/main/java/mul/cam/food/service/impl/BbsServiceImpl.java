@@ -27,4 +27,9 @@ public class BbsServiceImpl implements BbsService {
 		int n = dao.commentWrite(bbs);
 		return n>0?true:false;
 	}
+	
+	@Override
+	public List<BbsComment> commentList(int seq) {
+		return dao.commentList(seq);
+	}
 }

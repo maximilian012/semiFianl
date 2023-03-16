@@ -1,10 +1,13 @@
 package mul.cam.food.controller;
 import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import mul.cam.food.dto.BbsComment;
 import mul.cam.food.dto.BbsDto;
@@ -39,4 +42,10 @@ public class BbsController {
 		return "redirect:/bbsdetail.do?seq=" + bbs.getSeq();
 	}
 	
+	@ResponseBody
+	@GetMapping(value = "commentList.do")
+	public List<BbsComment> commentList(int seq) {
+		List<BbsComment> list = service.commentList(seq);
+		return list;
+	}
 }
