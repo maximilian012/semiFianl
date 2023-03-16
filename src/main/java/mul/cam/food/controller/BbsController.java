@@ -47,10 +47,11 @@ public class BbsController {
 	
 	@GetMapping(value = "bbswrite.do")
 	public String bbswrite() {
+		
 		return "bbswrite";
 	}
 	
-	@GetMapping(value = "bbswriteAF.do")
+	@PostMapping(value = "bbswriteAF.do")
 	public String bbswriteAf(Model model, BbsDto dto) {
 		System.out.println("wrtier : " + dto.getWriter());
 		System.out.println("content : " + dto.getContent());
@@ -67,6 +68,24 @@ public class BbsController {
 		
 		return "message"; // controller 에서 controller로 이동 redirect:/bbslist.do, forward
 	}
+	
+	@PostMapping(value = "login.do")
+	public String foodinsert(BbsDto food, Model model) {				
+		boolean b  = service.writeBbs(food);
+		String bbswrite = "";
+		if (b) {
+			bbswrite = "writeOK";
+		}else {
+			bbswrite = "writeNO";
+		}
+		model.addAttribute("bbswrite", bbswrite);
+		
+		return "message"; // controller 에서 controller로 이동 redirect:/bbslist.do, forward
+	}
+	
+	
+	
+	
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String login() {
 		
@@ -98,13 +117,47 @@ public class BbsController {
 	}
 	
 	
-	
-	@RequestMapping(value="SummerNoteImageFile.do" , method = RequestMethod.POST)
-	public @ResponseBody JsonObject SummerNoteImageFile(@RequestParam("file") MultipartFile file) {
-		JsonObject jsonObject = service.SummerNoteImageFile(file);
-		 System.out.println(jsonObject);
-		return jsonObject;
+	@ResponseBody
+	@RequestMapping(value="/uploadSummernoteImageFile", method = RequestMethod.POST)
+	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
+		
+		JsonObject jsonObject = new JsonObject();
+		
+		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
+		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
+				
+		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		
+		File targetFile = new File(fileRoot + savedFileName);
+		System.out.println("fileRoot : " + fileRoot);
+		System.out.println("savedFileName : " + savedFileName);
+		
+		
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
+			jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
+			jsonObject.addProperty("responseCode", "success");
+				
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		String a = jsonObject.toString();
+		return a;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

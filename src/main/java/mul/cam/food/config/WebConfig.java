@@ -12,11 +12,13 @@ public class WebConfig implements WebMvcConfigurer {
     //현재 localhost:8090/summernoteImage/1234.jpg
     //로 접속하면 C:/summernote_image/1234.jpg 파일을 불러온다.
 	
+	
 	/*
 	 * @Override public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	 * registry.addResourceHandler("/summernoteImage/**")
-	 * .addResourceLocations("file:///C:/Temp/"); }
+	 * .addResourceLocations("file:///C:/summernote_image/");
+	 * 
+	 * }
 	 */
-	 
 
 }

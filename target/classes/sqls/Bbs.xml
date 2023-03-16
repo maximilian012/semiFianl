@@ -16,7 +16,8 @@
 	<insert id="bbswrite" parameterType="mul.cam.food.dto.BbsDto">
 	
 		insert into recipe(writer, title, thumbnail, content, ingredients, cookingtime, serving , category, regdate, star, tag)
-				 values(#{writer}, #{title}, #{thumbnail}, #{content}, #{ingredients}, #{cookingtime}, #{serving}, #{category}, now(), 0, #{tag}) 
+				 values(#{writer}, #{title}, #{thumbnail},
+				  #{content}, #{ingredients}, #{cookingtime}, #{serving}, #{category}, now(), #{star}, #{tag}) 
 	
 	</insert>
 	
@@ -25,4 +26,25 @@
 		select * from user where user_id = #{user_id} and password=#{password}
 	
 	</select>
+	
+	
+	
+	
+	
+	<insert id="writeBbs" parameterType="mul.cam.food.dto.BbsDto">
+	insert into recipe(writer, thumbnail, title, content, ingredients, cookingtime, serving, category, regdate, star, tag)
+	values(#{writer}, #{thumbnail},#{title}, #{content}, #{ingredients}, #{cookingtime}, #{serving}, #{category}, now(),
+			#{star}, #{tag})	
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	</mapper>

@@ -13,5 +13,7 @@ public interface BbsDao {
 
 	MemberDto loginAf(MemberDto dto);
 
+	int writeBbs(BbsDto food);
+
 	
 }

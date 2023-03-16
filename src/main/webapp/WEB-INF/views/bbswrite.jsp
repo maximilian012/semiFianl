@@ -73,14 +73,13 @@
 	</nav>
 	<div style="width: 1000px; height: 1000px;" >
 	<main role="main" class="container">
-		<form action="bbswriteAF.do" method="get" enctype="multipart/form-data">
+		<form action="bbswriteAF.do" method="post" enctype="multipart/form-data" name="writeForm" onsubmit="return valid();">
 		 <input type="hidden" name="writer" value="<%=login.getUser_id() %>">
 				<div class="mb-3">
 
 					<label for="title">썸네일</label>
-
-					<input type="file" class="form-control" name="thumbnail" id="thumbnail" placeholder="제목을 입력해 주세요">
-
+					  <textarea class="summernote" name="thumbnail" rows="18"></textarea>
+						
 				</div>
 				<div class="mb-3">
 
@@ -93,11 +92,32 @@
 
 					<label for="title">카테고리</label>
 
-					<input type="text" class="form-control" name="category" id="category" placeholder="카테고리를 입력해 주세요">
+						<div class="custom-control custom-checkbox">
+						<input type="checkbox" id="jb-checkbox" class="custom-control-input" name="category" value="1"  onclick="clickCheck(this)">
+						<label class="custom-control-label" for="jb-checkbox">양식</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+						<input type="checkbox" id="jb-checkbox" class="custom-control-input" name="category" value="2"  onclick="clickCheck(this)">
+						<label class="custom-control-label" for="jb-checkbox">중식</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+						<input type="checkbox" id="jb-checkbox" class="custom-control-input" name="category" value="3"  onclick="clickCheck(this)">
+						<label class="custom-control-label" for="jb-checkbox">일식</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+						<input type="checkbox" id="jb-checkbox" class="custom-control-input" name="category" value="4"  onclick="clickCheck(this)">
+						<label class="custom-control-label" for="jb-checkbox">분식</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+						<input type="checkbox" id="jb-checkbox" class="custom-control-input" name="category" value="5"  onclick="clickCheck(this)">
+						<label class="custom-control-label" for="jb-checkbox">한식</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+						<input type="checkbox" id="jb-checkbox" class="custom-control-input" name="category" value="6"  onclick="clickCheck(this)">
+						<label class="custom-control-label" for="jb-checkbox">디저트</label>
+						</div>
 
 				</div>
-
-				
 
 				<div class="mb-3">
 
@@ -134,57 +154,101 @@
 					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
 
 				</div>
-			<div class="pt-1">
-				 <textarea id="summernote" name="content" rows="18"></textarea>
+			<div class="mb-3">
+			<label for="tag">내용</label>
+				 <textarea class="summernote" name="content" rows="18"></textarea>
 				
 
 			</div>
-			
 
 			
-			<script type="text/javascript">
-			$(document).ready(function() {
-				//여기 아래 부분
-				$('#summernote').summernote({
-					  height: 400,                 // 에디터 높이
-					  minHeight: null,             // 최소 높이
-					  maxHeight: null,             // 최대 높이
-					  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-					  lang: "ko-KR",					// 한글 설정
-					  placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정
-					 
-					  onImageUpload : function(files, editor, welEditable){
-									  sendFile(files[0],editor, welEditable);
-					   				  }
-				});
-			});
-			function sendFile(file, editor, welEditable){
-				var data = new FormData();
-				data.append("file", file);
-				console.log(file);
-				$.ajax({
-					data : data,
-					type : "POST",
-					url : "SummerNoteImageFile.do",
-					contentType : false,
-					processData : false,
-					success : function(data){
-						console.log(data);
-						console.log(editor);
-						$(editor).summernote("insertImage",data.url);
-					},
-					error(e){
-						console.log(e);
-					}
-				});
-			}
-
-
+		<script>
+		$('.summernote').summernote({
+			height : 200,
+			lang : "ko-KR"
+		});
 		
-		     
-			
-			</script>
+		function clickCheck(target) {
+		    document.querySelectorAll(`input[type=checkbox]`)
+		        .forEach(el => el.checked = false);
 
+		    target.checked = true;
+		}
+		
+		function valid(){
+			
+			const title = writeForm.title;
+			if (title.value == "") {
+				alert("제목을 입력하세요");
+				title.focus();
+				return false;
+			}
+		/* 	const content = writeForm.content;
+			if (content.value == "") {
+				alert("컨텐츠를 입력하세요");
+				content.focus();
+				return false;
+			} */
+			const ingredients = writeForm.ingredients;
+			if (ingredients.value == "") {
+				alert("재료를 입력하세요");
+				ingredients.focus();
+				return false;
+			}
+			const cookingtime = writeForm.cookingtime;
+			if (cookingtime.value == "") {
+				alert("요리시간을 입력하세요");
+				cookingtime.focus();
+				return false;
+			}
+			const serving = writeForm.serving;
+			if (serving.value == "") {
+				alert("몇인분 인지 입력하세요");
+				serving.focus();
+				return false;
+			}
+			/* const category = writeForm.category;
+			if (category.value == "") {
+				alert("카테고리를 선택하세요");
+				category.areacode.focus(); 
+				return false;
+			} */
+			flag = false;
+			const category = writeForm.category;
+			for(i=0; i < category.length; i++){
+				if(category[i].checked){			// 이 부분과
+					str += category[i].value + "\n";  	// 이 부분도 매우 중요한 부분
+					flag = true;
+				}
+			}
+						
+			if(flag == false){
+				alert("카테고리를 선택하세요");
+				return false;
+			}
+			
+			const content = writeForm.content;
+			if (content.value == "") {
+				alert("컨텐츠를 입력하세요");
+				content.focus();
+				return false;
+			}
+			const regdate = writeForm.regdate;
+			if (regdate.value == "") {
+				alert("조리시간을 입력하세요");
+				regdate.focus();
+				return false;
+			}
+			const star = writeForm.star;
+			if (star.value == "") {
+				alert("평점을 입력하세요");
+				star.focus();
+				return false;
+			}
+			
+		}
+		
+		</script>
 			<div class="pt-1 text-right">
 				<button class="btn btn btn-success" type="submit"
 					style="width: 10%; padding: 5px;">작성완료</button>
@@ -197,12 +261,12 @@
 	
 	<div class="b-example-divider "></div>
 	<div class="container-fluid ">
-  <footer class="py-3 my-4">
+<!--    <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       
     </ul>
     <p class="text-center text-muted">© 2023 Company, Inc</p>
-  </footer>
+  </footer>  -->
 </div>
 </body>
 </html>

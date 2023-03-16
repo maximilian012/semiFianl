@@ -17,8 +17,9 @@ public interface BbsService {
 
 	MemberDto loginAf(MemberDto dto);
 
-	JsonObject SummerNoteImageFile(MultipartFile file);
+	boolean writeBbs(BbsDto food);
 
+	
 	
 	
 }

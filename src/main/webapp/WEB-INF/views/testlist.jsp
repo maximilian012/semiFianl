@@ -53,6 +53,8 @@ if(list == null || list.size() == 0){
 				</td>
 				<td>
 				<%=dto.getTag() %>
+				<%=dto.getThumbnail() %>
+				<%=dto.getContent() %>
 						
 				</td>
 						

@@ -35,6 +35,10 @@ public class BbsDaoImpl implements BbsDao {
 		return  session.selectOne(ns + "loginAf", dto);
 	}
 
+	@Override
+	public int writeBbs(BbsDto food) {		
+		return session.insert(ns + "writeBbs", food);
+	}
 	
 	
 
