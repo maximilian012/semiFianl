@@ -8,6 +8,10 @@ import mul.cam.food.dto.BbsDto;
 
 public interface BbsDao {
 	
+	int bbswrite(BbsDto dto);
+	
+	List<BbsDto> getlist();
+	
 	BbsDto getBbs(int seq);
 
 	int commentWrite(BbsComment bbs);	

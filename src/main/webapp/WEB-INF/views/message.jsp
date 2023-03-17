@@ -1,10 +1,35 @@
+<%@page import="mul.cam.food.dto.MemberDto"%>
+<%@page import="mul.cam.food.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<html>
-<head>
-</head>
-<body>
+
+
+
+
+
+
+<%
+String bbswrite = (String) request.getAttribute("bbswrite");
+if (bbswrite != null && !bbswrite.equals("")) {
+	if (bbswrite.equals("writeOK")) {
+%>
+<script type="text/javascript">
+		alert("글쓰기 성공");
+		location.href = "bbslist.do";
+		</script>
+<%
+} else if(bbswrite.equals("writeNO")) {
+	%>
+<script type="text/javascript">
+		alert("글쓰기 실패");
+		location.href = "bbswrite.do";
+		</script>
+<%
+}
+}
+%>
+
 
 <%
 String message = (String)request.getAttribute("message");
@@ -26,78 +51,24 @@ if(message != null && !message.equals("")){
 	}
 }
 
-
-
-String bbswrite = (String)request.getAttribute("bbswrite");
-if(bbswrite != null && !bbswrite.equals("")){
-	if(bbswrite.equals("BBS_ADD_OK")){
+String login = (String)request.getAttribute("login");
+if(login != null && !login.equals("")){
+	if(login.equals("LOGIN_OK")){
 		%>
 		<script type="text/javascript">
-		alert("성공적으로 작성되었습니다");
-		location.href = "bbslist.do";
+		alert("로그인되었습니다");
+		location.href = "mainhome.do";
 		</script>
 		<%
-	}
-	else{
+	}else{
 		%>
 		<script type="text/javascript">
-		alert("다시 작성해 주십시오");
-		location.href = "bbswrite.do";
-		</script>
-		<%
-	}
-}
-
-String bbsupdate = (String)request.getAttribute("bbsupdate");
-if(bbsupdate != null && !bbsupdate.equals("")){
-	if(bbsupdate.equals("BBS_UPDATE_OK")){
-		System.out.println("여기옴?");
-		%>
-		<script type="text/javascript">
-		alert("성공적으로 수정되었습니다");
-		System.out.println("여기는?");
-		location.href = "bbslist.do";
-		</script>
-		<%
-	}
-	else{		
-		%>
-		<script type="text/javascript">
-		alert("다시 작성해 주십시오");
-		System.out.println("여기로오나?");
-		location.href = "bbslist.do";
+		alert("아이디나 패스워드를 확인해 주십시오");
+		location.href = "login.do";
 		</script>
 		<%
 	}	
 }
-
-
-String bbsdelete = (String)request.getAttribute("bbsdelete");
-if(bbsdelete != null && !bbsdelete.equals("")){
-	if(bbsdelete.equals("BBS_DELETE_OK")){
-		%>
-		<script type="text/javascript">
-		alert("성공적으로 삭제되었습니다");
-		location.href = "bbs?param=bbslist";
-		</script>
-		<%
-	}
-	else{
-		%>
-		<script type="text/javascript">
-		alert("삭제되지 않았습니다");		
-		location.href = "bbs?param=bbslist";
-		</script>
-		<%
-	}	
-}
-
-
-
 %>
-</body> 
-</html> 
-
-
 
 

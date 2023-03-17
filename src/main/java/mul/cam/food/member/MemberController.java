@@ -37,13 +37,35 @@ public class MemberController {
 		return "regi";
 	}
 	
+	@RequestMapping(value = "find.do", method = RequestMethod.GET)
+	public String find() {
+		return "find";
+	}
+	
+	@RequestMapping(value = "find_id.do", method = RequestMethod.GET)
+	public String findid() {
+		return "find_id";
+	}
+	
+	@RequestMapping(value = "find_id_result.do", method = RequestMethod.GET)
+	public String findid_result() {
+		return "find_id_result";
+	}
+	
+	@RequestMapping(value = "find_pwd.do", method = RequestMethod.GET)
+	public String findpwd() {
+		return "find_pwd";
+	}
+	
+	
+	
 	@ResponseBody
 	@RequestMapping(value = "idcheck.do", method = RequestMethod.POST)
 	public String idcheck(String user_id) {
 	//	System.out.println("MemberController idcheck " + new Date());
 		
-		boolean isS = service.idCheck(user_id);
-		if(isS == true) {	// id가 있음
+		boolean ok = service.idCheck(user_id);
+		if(ok == true) {	// id가 있음
 			return "NO";
 		}
 		
@@ -83,7 +105,31 @@ public class MemberController {
 	  
 	  		model.addAttribute("login", msg);
 	  
-	  	return "message"; }
+	  	return "message"; 
+	  	}
+	  
+	  // 아이디 찾기
+		// @ResponseBody
+		@RequestMapping(value = "find_id_Af.do", method = RequestMethod.POST)
+		public String find_id(Model model, String email){
+			System.out.println("MemberController find_id_Af.do " + new Date());
+			System.out.println("email:" + email);
+			
+			String id = service.find_id(email);
+			model.addAttribute("find_id", id);
+			return "find_id_result";
+		} 
+		
+		// 패스워드 찾기
+		@RequestMapping(value = "find_pwd_Af.do", method = RequestMethod.POST)
+		public String find_pwd(Model model, String email){
+			System.out.println("MemberController find_id_Af.do " + new Date());
+			System.out.println("email:" + email);
+			
+			String id = service.find_id(email);
+			model.addAttribute("find_id", id);
+			return "find_id_result";
+		} 
 	 
 	@RequestMapping(value = "sessionOut.do", method = RequestMethod.GET)
 	public String sessionOut(Model model) {

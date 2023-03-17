@@ -13,4 +13,7 @@ public interface MemberDao {
 	
 	MemberDto login(MemberDto dto);
 	
+	String find_id(String email);
+	
+	String find_pwd(String email);
 }

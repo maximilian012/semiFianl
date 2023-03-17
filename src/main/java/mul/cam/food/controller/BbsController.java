@@ -20,6 +20,19 @@ public class BbsController {
 	@Autowired
 	BbsService service;
 	
+	@GetMapping(value = "mainhome.do")
+	public String mainhome(Model model) {
+//		System.out.println("MemberController mainhome() " + new Date());	
+		
+		List<BbsDto> food = service.getlist();
+
+		model.addAttribute("food", food);
+		
+		return "mainhome";
+	}
+	
+	
+	
 	@GetMapping(value = "bbsdetail.do")
 	public String bbsdetail(Model model, int seq) {
 		System.out.println("BbsController bbsdetail " + new Date());

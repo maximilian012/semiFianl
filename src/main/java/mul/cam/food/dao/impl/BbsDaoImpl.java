@@ -19,6 +19,15 @@ public class BbsDaoImpl implements BbsDao {
 	
 	String ns = "Bbs.";
 
+	@Override
+	public int bbswrite(BbsDto dto) {
+		return session.insert(ns + "bbswrite", dto);
+	}
+	
+	@Override
+	public List<BbsDto> getlist() {
+		return session.selectList(ns + "getlist");
+	}
 
 	@Override
 	public BbsDto getBbs(int seq) {		

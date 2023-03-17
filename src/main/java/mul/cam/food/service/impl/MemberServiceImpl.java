@@ -38,5 +38,17 @@ public class MemberServiceImpl implements MemberService{
 		return dao.login(dto);
 	}
 	
+	@Override
+	public String find_id(String email) {
+		System.out.println("dao.find_id(email):" + dao.find_id(email));
+		return dao.find_id(email);
+	}
+	
+	@Override
+	public String find_pwd(String email) {
+		System.out.println("dao.find_id(email):" + dao.find_id(email));
+		return dao.find_pwd(email);
+	}
+	
 	
 }

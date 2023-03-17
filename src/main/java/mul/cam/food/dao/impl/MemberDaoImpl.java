@@ -38,6 +38,16 @@ public class MemberDaoImpl implements MemberDao {
 		return mem;
 	}
 	
+	@Override
+	public String find_id(String email) {
+		return session.selectOne(ns + "find_id", email);
+	}
+	
+	@Override
+	public String find_pwd(String email) {
+		return session.selectOne(ns + "find_pwd", email);
+	}
+	
 	
 }
 
