@@ -13,4 +13,6 @@ public interface BbsDao {
 	int commentWrite(BbsComment bbs);	
 
 	List<BbsComment> commentList(int seq);
+	
+	int updateBbs(BbsDto dto);
 }

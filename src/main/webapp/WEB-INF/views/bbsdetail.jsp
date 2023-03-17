@@ -72,16 +72,11 @@
 		      
 		      <article class="blog-post">
 		        <h2 class="blog-post-title mb-1">댓글 한눈에 보기</h2>
-		        <p class="blog-post-meta" id="allreply"></p>
-		
-		        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-		        <ul>
-		          <li>First list item</li>
-		          <li>Second list item with a longer description</li>
-		          <li>Third list item to close it out</li>
-		        </ul>
-		        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-      		 </article>
+		        <p class="blog-post-meta" id="allreply">
+		        
+		        
+		        </p>
+		      </article>
 
 		      <!-- 평점 입력 -->
 		      <article class="blog-post">
@@ -137,18 +132,18 @@
          	<h3 class="pb-4 mb-4 fst-italic border-bottom">댓글 입력하기</h3>
 		    <form action="commentWriteAf.do" method="post">
 			    <dl>
-		          <dt><%=dto.getWriter() %></dt>
+		          <dt>작성자 : <%=dto.getWriter() %></dt>
 		          <dd>
 		          	<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
 		          	<textarea rows="10" cols="100"><%=dto.getContent() %></textarea>
 		          </dd>
 	        	</dl>
 		    
-		    
 			    <!-- 전송, 목록 버튼 -->
 			    <div class="wrapper" style="margin-left:294px;">
 			    	<button class="btn btn-outline-primary rounded-pill" type="submit">전송하기</button>
 			    	<button class="btn btn-outline-primary rounded-pill" type="button" onclick="location.href='bbslist.do'">목록으로</button>
+			    	<button class="btn btn-outline-primary rounded-pill" type="button" onclick="location.href='bbsupdate.do'">수정하기</button>
 			    </div>
 			</form>
     </main>

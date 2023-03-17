@@ -32,4 +32,10 @@ public class BbsServiceImpl implements BbsService {
 	public List<BbsComment> commentList(int seq) {
 		return dao.commentList(seq);
 	}
+	
+	@Override
+	public boolean updateBbs(BbsDto dto) {
+		int n = dao.updateBbs(dto);
+		return n>0?true:false;
+	}
 }

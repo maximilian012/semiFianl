@@ -48,4 +48,28 @@ public class BbsController {
 		List<BbsComment> list = service.commentList(seq);
 		return list;
 	}
+	
+	@GetMapping(value = "bbsupdate.do")
+	public String bbsupdate(Model model, int seq) {
+		BbsDto dto = service.getBbs(seq);
+		model.addAttribute("dto", dto);
+		
+		return "bbsupdate";
+	}
+	
+	@GetMapping(value = "bbsupdateAf.do")
+	public String bbsupdateAf(Model model, BbsDto dto) {
+		System.out.println(dto.toString());
+		boolean isS = service.updateBbs(dto);
+		
+		String bbsupdate = "BBS_UPDATE_OK";
+		if(!isS) {			
+			bbsupdate = "BBS_UPDATE_NG";
+		}
+		model.addAttribute("bbsupdate", bbsupdate);
+		model.addAttribute("seq", dto.getSeq());
+		
+		return "message";
+	}
+	
 }

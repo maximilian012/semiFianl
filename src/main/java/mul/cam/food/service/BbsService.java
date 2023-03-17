@@ -13,4 +13,6 @@ public interface BbsService {
 	
 	List<BbsComment> commentList(int seq);
 	
+	boolean updateBbs(BbsDto dto);
+	
 }

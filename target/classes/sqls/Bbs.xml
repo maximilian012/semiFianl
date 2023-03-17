@@ -34,14 +34,11 @@
 		where seq=#{seq}
 	</select>
 	
-<!-- 	
 	<update id="updateBbs" parameterType="mul.cam.food.dto.BbsDto">
 		update recipe
-		set title=#{title}, content=#{content}, regdate=now()
+		set title=#{title}, content=#{content}, ingredients=#{ingredients}, cookingtime=#{cookingtime}, serving=#{serving}, category=#{category}, regdate=now(), tag=#{tag}
 		where seq=#{seq}
 	</update>
 	 
-
-
- -->	
+	
 </mapper>

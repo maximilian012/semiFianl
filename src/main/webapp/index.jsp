@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
     
 <%
-	response.sendRedirect("bbsdetail.do?seq=1");
+	response.sendRedirect("bbsupdate.do?seq=1");
 %>

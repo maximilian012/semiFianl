@@ -34,6 +34,11 @@ public class BbsDaoImpl implements BbsDao {
 	public List<BbsComment> commentList(int seq) {
 		return session.selectList(ns + "commentList", seq);
 	}
+	
+	@Override
+	public int updateBbs(BbsDto dto) {
+		return session.update(ns + "updateBbs", dto);
+	}
 }
 	
 	
