@@ -71,10 +71,12 @@
 			</div>
 		</div>
 	</nav>
-	<div style="width: 1000px; height: 1000px;" >
-	<main role="main" class="container">
+	<div style="margin: 0 auto;">
+	<main role="main" class="container" >
 		<form action="bbswriteAF.do" method="post" enctype="multipart/form-data" name="writeForm" onsubmit="return valid();">
 		 <input type="hidden" name="writer" value="<%=login.getUser_id() %>">
+		 <input type="hidden" name="auth" value="<%=login.getAuth()%>">
+		 
 				<div class="mb-3">
 
 					<label for="title">썸네일</label>
@@ -250,23 +252,58 @@
 		
 		</script>
 			<div class="pt-1 text-right">
+				<button class="btn btn btn-success" type="button" onclick="history.back()" 
+					style="width: 10%; padding: 5px;">목록보기</button>
+				<button class="btn btn btn-success" type="reset"
+					style="width: 10%; padding: 5px;">다시쓰기</button>
 				<button class="btn btn btn-success" type="submit"
 					style="width: 10%; padding: 5px;">작성완료</button>
-						<!-- fweewfewwefewffwe -->
 			</div>
 		</form>
 
+	
 	</main>
 	</div>
 	
+
+	
 	<div class="b-example-divider "></div>
 	<div class="container-fluid ">
-<!--    <footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      
-    </ul>
-    <p class="text-center text-muted">© 2023 Company, Inc</p>
-  </footer>  -->
+    <footer class="py-3 my-4">
+    <!-- 플로팅 배너 CSS -->
+<!-- <style>
+/* PC 배너1 스타일 */
+.floBanPc1 {
+  position: fixed;
+  top: 128px; /* 윗쪽 끝에서부터의 거리 */
+  right: 0;
+  z-index: 99;
+}
+/* PC 배너2 스타일 */
+.floBanPc1 {
+  position: fixed;
+  top: 204px; /* 윗쪽 끝에서부터의 거리 */
+  right: 20px;
+  z-index: 99;
+}
+
+</style>
+
+플로팅 배너 HTML
+PC 배너1
+<div class="floBanPc1 hidden-md hidden-sm hidden-xs">
+  <a href="링크주소" target="_blank">
+    <img src="./images/Heart-attack-Burger-1.png" width="350px" height="500px">
+  </a>
+</div> -->
+
+<!-- <div class="floBanPc2 hidden-md hidden-sm hidden-xs">
+  <a href="링크주소" target="_blank">
+    <img src="배너이미지주소" width="가로길이px" height="세로길이px">
+  </a>
+</div>  -->
+
+  </footer> 
 </div>
 </body>
 </html>

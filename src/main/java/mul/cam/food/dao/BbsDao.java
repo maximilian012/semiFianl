@@ -13,7 +13,10 @@ public interface BbsDao {
 
 	MemberDto loginAf(MemberDto dto);
 
-	int writeBbs(BbsDto food);
+	List<MemberDto> bringDelflg(MemberDto dto);
+
+	BbsDto getBbs(int seq);
+
 
 	
 }

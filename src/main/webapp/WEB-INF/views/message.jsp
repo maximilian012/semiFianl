@@ -33,12 +33,13 @@ if (bbswrite != null && !bbswrite.equals("")) {
 <%
 MemberDto dto = (MemberDto)request.getAttribute("mem");
 String loginOK = (String) request.getAttribute("loginOK");
+
 if (loginOK != null && !loginOK.equals("")) {
 	if (loginOK.equals("BBS_ADD_OK")) {
 %>
 <script type="text/javascript">
 		alert("환영합니다!!! <%= dto.getName()%>님");
-		location.href = "bbslist.do?id=" + <%= dto.getUser_id()%>;
+		location.href = "bbslist.do?auth=" + <%= dto.getAuth()%>;
 		</script>
 <%
 } else if(loginOK.equals("BBS_ADD_NO")) {
@@ -48,9 +49,41 @@ if (loginOK != null && !loginOK.equals("")) {
 		location.href = "login.do";
 		</script>
 <%
+} else if(loginOK.equals("Withdrawal member")){
+	%>
+	<script type="text/javascript">
+		alert("탈퇴된 회원입니다.");
+		location.href = "login.do";
+		</script>
+	
+	<%
+	
 }
 }
 %>
 
+
+
+
+<%
+String delete = (String) request.getAttribute("delete");
+if (delete != null && !delete.equals("")) {
+	if (delete.equals("deleteOK")) {
+%>
+<script type="text/javascript">
+		alert("삭제 성공");
+		location.href = "adminList.do";
+		</script>
+<%
+} else if(delete.equals("deleteNO")) {
+	%>
+<script type="text/javascript">
+		alert("삭제 실패");
+		location.href = "adminList.do";
+		</script>
+<%
+}
+}
+%>
 
 

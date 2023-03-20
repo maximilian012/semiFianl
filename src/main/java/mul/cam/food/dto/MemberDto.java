@@ -12,13 +12,14 @@ public class MemberDto implements Serializable{
 	private String address;
 	private String regdate;
 	private String delflg;
+	private String auth;
 	
 	public MemberDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDto(int seq, String user_id, String password, String name, String age, String address, String regdate,
-			String delflg) {
+			String delflg, String auth) {
 		super();
 		this.seq = seq;
 		this.user_id = user_id;
@@ -28,6 +29,7 @@ public class MemberDto implements Serializable{
 		this.address = address;
 		this.regdate = regdate;
 		this.delflg = delflg;
+		this.auth = auth;
 	}
 
 	public int getSeq() {
@@ -94,13 +96,18 @@ public class MemberDto implements Serializable{
 		this.delflg = delflg;
 	}
 
+	public String getAuth() {
+		return auth;
+	}
+
+	public void setAuth(String auth) {
+		this.auth = auth;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDto [seq=" + seq + ", user_id=" + user_id + ", password=" + password + ", name=" + name + ", age="
-				+ age + ", address=" + address + ", regdate=" + regdate + ", delflg=" + delflg + "]";
+				+ age + ", address=" + address + ", regdate=" + regdate + ", delflg=" + delflg + ", auth=" + auth + "]";
 	}
-	
-	
-	
 	
 }
