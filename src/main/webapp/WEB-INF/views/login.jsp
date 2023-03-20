@@ -103,7 +103,7 @@
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
              <a href="#" onclick="account()" class="link-danger">Register</a></p>
           </div>
-	
+	<%--수정된건가 --%>
 		
 	</form>
 	
