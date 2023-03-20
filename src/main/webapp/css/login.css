@@ -1,0 +1,220 @@
+body {
+  background: #FFF9EE;
+}
+
+/* div box styling */
+.container {
+  margin: auto;
+  width: 650px;
+  height: 550px;
+  position: relative;
+}
+
+.welcome {
+  background: #f6f6f6;
+  width: 650px;
+  height: 415px;
+  position: absolute;
+  top: 25%;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pinkbox {
+  position: absolute;
+  top: -10%;
+  left: 5%;
+  background: #FFE6AF;
+  width: 320px;
+  height: 500px;
+  border-radius: 5px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.nodisplay {
+  display: none;
+  transition: all 0.5s ease;
+}
+
+.leftbox, .rightbox {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  transition: 1s all ease;
+}
+
+.leftbox {
+  left: -2%;
+}
+
+.rightbox {
+  right: -2%;
+}
+
+/* font & button styling */
+h1 {
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  margin-top: 40px;
+  text-transform: uppercase;
+  color: white;
+  font-size: 2em;
+  letter-spacing: 8px;
+}
+
+.desc {
+  margin-top: 80%;
+}
+
+.account {
+  margin-top: 8%;
+  font-size: 10px;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.7em;
+  letter-spacing: 2px;
+  color: #8E9AAF;
+  text-align: center;
+}
+
+span {
+  color: #EAC7CC;
+  font-weight: bold;
+}
+
+.logo {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  top: -25%;
+  left: 0%;
+  margin-top: 20%;
+}
+
+button {
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 7px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin: auto;
+  outline: none;
+  display: block;
+}
+
+button:hover {
+  background: #FFE6AF !important;
+  color: #f6f6f6 !important;
+  transition: background-color 0.5s ease-out;
+}
+
+.button {
+  width: 70%;
+  padding: 12px;
+  margin-top: 7px;
+  background: white;
+  color: #ce7d88;
+  border: solid 1px #FFD26F;
+  
+}
+
+.submit {
+  margin-top: 5px;
+}
+
+.id_check_button {
+  display: flex;
+  width:75%;
+  align-items: center;
+}
+
+.id_check_button input {
+  margin-right: 10px;
+}
+
+#idChkBtn {
+  letter-spacing: 0.1px;
+  font-size: 0.03px;
+  width:25%;
+  height:30%;
+  background: white;
+  color: #ce7d88;
+  border: solid 1px #FFD26F;
+  padding: 1px 2px;
+}
+
+/* form styling */
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 7px;
+}
+
+.more-padding {
+  padding-top: 35px;
+}
+.more-padding input {
+  padding: 12px;
+}
+.more-padding .submit {
+  margin-top: 45px;
+}
+
+input {
+  background: #FFE6AF;
+  width: 65%;
+  color: white;
+  border: none;
+  border-bottom: 2px solid white;
+  padding: 7px;
+  margin: 7px;
+}
+input::placeholder {
+  color: white;
+  letter-spacing: 2px;
+  font-size: 1em;
+  font-weight: bold;
+}
+input:focus {
+  color: #ce7d88;
+  outline: none;
+  border-bottom: 1.2px solid rgba(206, 125, 136, 0.7);
+  font-size: 1em;
+  transition: 0.8s all ease;
+}
+input:focus::placeholder {
+  opacity: 0;
+}
+
+.personal_class {
+  display: flex;
+  width:75%;
+  align-items: center;
+}
+
+.personal input {
+  margin-right: 10px;
+}
+
+label {
+  font-family: "Open Sans", sans-serif;
+  color: #ce7d88;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+}
+
+input[type=checkbox] {
+  width: 12px;
+  background: #ce7d88;
+}
+
+.checkbox input[type=checkbox]:checked + label {
+  color: #ce7d88;
+  transition: 0.5s all ease;
+}

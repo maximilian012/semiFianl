@@ -6,20 +6,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
 
+import mul.cam.food.dto.BbsComment;
 import mul.cam.food.dto.BbsDto;
-import mul.cam.food.dto.MemberDto;
 
 public interface BbsService {
 
+	List<BbsDto> mainHomegetBbs();
+	
+	List<BbsDto> recentBbs();
+	
 	boolean bbswrite(BbsDto dto);
 
-	List<BbsDto> testlist();
+	List<BbsDto> getlist();
 
-	MemberDto loginAf(MemberDto dto);
+//	JsonObject SummerNoteImageFile(MultipartFile file);
 
-	boolean writeBbs(BbsDto food);
-
+	BbsDto getBbs(int seq);
 	
-	
-	
+	boolean commentWrite(BbsComment bbs);
 }

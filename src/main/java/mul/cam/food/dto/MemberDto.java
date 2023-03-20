@@ -7,6 +7,7 @@ public class MemberDto implements Serializable{
 	private int seq;
 	private String user_id;
 	private String password;
+	private String email;
 	private String name;
 	private String age;
 	private String address;
@@ -14,15 +15,15 @@ public class MemberDto implements Serializable{
 	private String delflg;
 	
 	public MemberDto() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public MemberDto(int seq, String user_id, String password, String name, String age, String address, String regdate,
-			String delflg) {
+	public MemberDto(int seq, String user_id, String password, String email, String name, String age, String address,
+			String regdate, String delflg) {
 		super();
 		this.seq = seq;
 		this.user_id = user_id;
 		this.password = password;
+		this.email = email;
 		this.name = name;
 		this.age = age;
 		this.address = address;
@@ -52,6 +53,14 @@ public class MemberDto implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getName() {
@@ -96,11 +105,9 @@ public class MemberDto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "MemberDto [seq=" + seq + ", user_id=" + user_id + ", password=" + password + ", name=" + name + ", age="
-				+ age + ", address=" + address + ", regdate=" + regdate + ", delflg=" + delflg + "]";
+		return "MemberDto [seq=" + seq + ", user_id=" + user_id + ", password=" + password + ", email=" + email
+				+ ", name=" + name + ", age=" + age + ", address=" + address + ", regdate=" + regdate + ", delflg="
+				+ delflg + "]";
 	}
-	
-	
-	
 	
 }
