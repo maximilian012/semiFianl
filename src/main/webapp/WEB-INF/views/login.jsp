@@ -1,200 +1,226 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>HOME BOB : 로그인 창</title>
+
+<%-- 네이버 로그인 API --%>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 
 
+<%-- jQuery --%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
 
-
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-<script src="http://lab.alexcican.com/set_cookies/cookie.js"
-	type="text/javascript"></script>
-	
-	
-	
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
+<%-- cookie 저장 --%>
+<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
 
 <style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
 
-.divider:after,
-.divider:before {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: #eee;
+.h1{
+  color: FFE5A3;
 }
-.h-custom {
-  height: calc(100% - 73px);
+
+.img{
+  width: 30%;
+  align-items: center;
+  flex-direction: column;
 }
-@media (max-width: 450px) {
-  .h-custom {
-    height: 100%;
-  }
+
+
+.wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.label{
+	color: white;
+	font-size: 2em;
+}
+
+.login {
+  width: 40%;
+  height: 600px;
+  background-color: #FFF1CD;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login_sns {
+  padding: 20px;
+  display: flex;
+}
+
+.login_sns li {
+  padding: 0px 15px;
+}
+
+.login_sns a {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 50px;
+  background: white;
+  font-size: 20px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login_id {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.login_id input {
+  width: 100%;
+  height: 50px;
+  border-radius: 30px;
+  margin-top: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.login_pwd {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.login_pwd input {
+  width: 100%;
+  height: 50px;
+  border-radius: 30px;
+  margin-top: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.login_etc {
+  padding: 10px;
+  width: 80%;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.button {
+  margin-top: 10px;
+  width: 80%;
+}
+.button button {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  outline: none;
+  border-radius: 40px;
+  background: #FFE5A3;
+  color: white;
+  font-size: 1.2em;
+  letter-spacing: 2px;
 }
 
 
 </style>
+
 </head>
 <body>
 
-	<section class="vh-100">
-		<div class="container-fluid h-custom">
-			<div class="row d-flex justify-content-center align-items-center h-100">
-				<div class="col-md-9 col-lg-6 col-xl-5">
-					<img
-						src="https://www.multicampus.com/kr/images/main/2021/tab-image3.jpg"
-						class="img-fluid" alt="Sample image">
-				</div>
-	<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-	<form action="loginAf.do" method="post">
-	<div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-            <p class="lead fw-normal mb-0 me-3">Sign in with</p>            
-          </div>
+<div style="text-align: center;">
+	<a href=><img alt="로고" class="img" src="./images/logo.png"></a><br>
+</div>
+<h1 style="text-align:center;">로그인</h1>
 
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
-	<!-- id input -->
-          <div class="form-outline mb-4">
-            <input type="text" id="user_id" name="user_id" class="form-control form-control-lg"
-              placeholder="Enter a valid id" />
-          </div>
-		
-		<!-- Password input -->
-          <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" name="password" class="form-control form-control-lg"
-              placeholder="Enter password" />
-          </div>
-	
-		<div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="chk_save_id" />
-              <label class="form-check-label" for="form2Example3">
-                Remember me
-              </label>
-            </div>
-            <a href="#!" class="text-body">Forgot password?</a>
-          </div>
-          
-          
-		<div class="text-center text-lg-start mt-4 pt-2">
-            <button type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-              
-            
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
-             <a href="#" onclick="account()" class="link-danger">Register</a></p>
-          </div>
-	
-		
-	</form>
-	
-	
-	</div>
 
+<div class="wrap">
+	<div class="login">
+
+		<form action="loginAf.do" method="post">
+			<div class="login_id">
+				<label class="label">아이디</label>
+				<input type="text" id="id" name="user_id" placeholder="아이디">
 			</div>
+			<div class="login_pwd">
+				<label class="label">패스워드</label>
+				<input type="text" id="pwd" name="password" placeholder="패스워드">
+			</div><br>
+			<div class="checkbox">
+				<input type="checkbox" id="chk_save_id">아이디 저장
+			</div>
+			<div class="button">
+				<button type="submit" id="login">로그인</button>
+				<button type="button" id="account">회원가입</button>
+				<button type="button" id="find_id">아이디/패스워드 찾기</button>
+			</div>
+			<div class="login_sns">
+				<li><a href="naver.com"><i class="fab fa-naver"></i></a></li>
+				<li><a href="kakao.com"><i class="fab fa-kakao"></i></a></li>
+				<li><a href="google.com"><i class="fab fa-google"></i></a></li>
+			</div>
+		</form>
+	</div>
+</div>
 
-		</div>
-
-
-
-<div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Copyright ©️ 2021. MultiCampus.
-    </div>
-    <!-- Copyright -->
-
-    <!-- Right -->
-    <div>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="#!" class="text-white">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </div>
-
-
-	</section>
-
-
-	<script type="text/javascript">
+<script type="text/javascript">
+$(function() {
 	
-	function account(){
+	// 회원가입 창으로 이동
+	$("#account").click(function() {
+		location.href = "regi.do";		
+	});
+	
+	// 아이디/비번 찾기로 이동
+	$("#find_id").click(function() {
+		location.href = "find.do";		
+	});
+	
+	// 쿠키 값 저장, 쿠키 없으면 null
+	let user_id = $.cookie("user_id");
+
+	if(user_id != null){	// 저장한 id가 있음
+		$("#id").val(user_id);
+		$("#chk_save_id").prop("checked", true);
+	};
+
+	$("#chk_save_id").click(function () {
 		
-		location.href="regi.do";
-	}
-	
-	
-	
-	
-		/*  
-		    cookie : id저장 (다시 화면 띄워도 아이디 존재) == String     client
-		    session : login한 정보 ==Object                       server
+		if( $("#chk_save_id").is(":checked") == true ){
 			
-		 */
-
-		let user_id = $.cookie("user_id");
-
-		if (user_id != null) { // 저장한 id 가 있음
-			$("#id").val(user_id); // 아이디 넣기
-			$("#chk_save_id").prop("checked", true); // checkbox 켜두기
-
-		}
-
-		$("#chk_save_id").click(function() {
-			// is() 선택한 요소에서 주어진 선택자가 있는지 판별
-			// id요소가 #chk_save_id인 것에서 checked가 되어있다면 true를 반환
-			if ($("#chk_save_id").is(":checked") == true) { // 클릭했을때
-				//alert('true');
-				if ($("#id").val().trim() == "") { // 아이디 기입 안했을때
-					//alert('put it id');
-					$("#chk_save_id").prop("checked", false); // 체크 안해줌 ********수정된 요소의 값을 가져오는데는 prop()사용해라
-				} else {
-
-					//cookie를 저장
-					$.cookie("user_id", $("#id").val().trim(), {
-						expireds : 7,
-						path : './'
-					});
-				}
-
-			} else { // 클릭해제
-				//alert('false');
-				$.removeCookie("user_id", {
-					path : './'
-				}); // 클릭해제하면 쿠키 삭제됨
+			if( $("#id").val().trim() == "" ){
+				alert('id를 입력해 주십시오');
+				$("#chk_save_id").prop("checked", false);
+			}else{
+				// cookie를 저장
+				$.cookie("user_id", $("#id").val().trim(), { expires:7, path:'./' });	// expires 만료 날짜, ./ 현재 경로
 			}
+			
+		}else{
+			$.removeCookie("user_id", { path:'./' });
+		}	
+	});
+});
+</script>
 
-		});
-	</script>
+
 
 
 </body>

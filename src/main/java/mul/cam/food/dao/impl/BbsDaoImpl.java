@@ -3,13 +3,13 @@ package mul.cam.food.dao.impl;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mul.cam.food.dao.BbsDao;
+import mul.cam.food.dto.BbsComment;
 import mul.cam.food.dto.BbsDto;
-import mul.cam.food.dto.MemberDto;
+import mul.cam.food.dto.BbsParam;
 
 
 @Repository // 저장소
@@ -18,27 +18,48 @@ public class BbsDaoImpl implements BbsDao {
 	@Autowired
 	SqlSession session;
 	
-	String ns = "BbsFoodList.";
+	String ns = "Bbs.";	
+
+	@Override
+	public List<BbsDto> mainHomegetBbs() {
+		return session.selectList(ns + "mainHomegetBbs");
+	}
+
+	@Override
+	public List<BbsDto> recentBbs() {
+		return session.selectList(ns + "recentBbs");
+	}
+
 	@Override
 	public int bbswrite(BbsDto dto) {
 		
 		return session.insert(ns + "bbswrite", dto);
 	}
 	@Override
-	public List<BbsDto> testlist() {
+	public List<BbsDto> getlist() {
 		
-		return session.selectList(ns + "testlist");
-	}
-	@Override
-	public MemberDto loginAf(MemberDto dto) {
-		
-		return  session.selectOne(ns + "loginAf", dto);
+		return session.selectList(ns + "getlist");
 	}
 
 	@Override
-	public int writeBbs(BbsDto food) {		
-		return session.insert(ns + "writeBbs", food);
+	public BbsDto getBbs(int seq) {		
+		return session.selectOne(ns + "getBbs", seq);
 	}
+	
+	@Override
+	public int commentWrite(BbsComment bbs) {		
+		return session.insert(ns + "commentWrite", bbs);
+	}
+
+	// 20일 추가 - 검색부분
+	
+	@Override
+	public List<BbsDto> getSearchlist(BbsParam param) {
+		return session.selectList(ns+"getSearchList", param);
+	}
+
+	
+	
 	
 	
 

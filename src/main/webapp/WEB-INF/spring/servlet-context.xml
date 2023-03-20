@@ -1,66 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-
-
-	<!-- spring MVC annotation(주석문, 지시문)을 사용하기 위한 설정 -->
-	<context:annotation-config />
-
-
-	<!-- framework은 누가 만든거 사용하는거 -->
-
-
-	<!-- view 폴더의 위치, 확장자명을 설정 InternalResourceViewResolver viewResolver = new 
-		InternalResourceViewResolver(); viewResolver.prefix = "/WEB-INF/views/" -->
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" /> <!-- 확장자 명 -->
-
-	</bean>
-
-	<!-- 공통 패키지(경로) -->
-	<context:component-scan
-		base-package="mul.cam.food" />
-
-
-	<!-- ajax 사용허가 -->
-	<mvc:annotation-driven />
-
-
-	<!-- spring에서 처리 할수 없는 요청은 tomcat이 처리 -->
-	<mvc:default-servlet-handler />
-	
-	<!-- Multipart Resolaver 대용량 처리-->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize">
-			<value>52428800</value>    <!-- 50MB 최대로 업로드가 가능한 파일의 크기 설정 -->
-		</property>
-		<property name="maxInMemorySize">
-			<value>1000000</value>    <!-- 디스크에 임시 파일을 생성하기 전 메모리에 보관할 수 있는 최대 바이트 크기를 설정 -->
-		</property>
-		<property name="defaultEncoding">
-			<value>utf-8</value>   <!--전달되는 매개변수의 인코딩 설정  -->
-		</property>
-	
-	</bean>
-	<!-- Exception을 제어 -->
-	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-    <property name="exceptionMappings">
-        <props>
-            <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error/attachFileOverSizeErr</prop>
-        </props>
-    </property>
-</bean>
-
-
-</beans>
+      
+      
+      <!-- spring MVC annotation(주석문, 지시문)을 사용하기 위한 설정 -->
+      <context:annotation-config />
+      
+      
+      <!-- framework은 누가 만든거 사용하는거 -->
+      
+      
+      <!-- 
+     	view 폴더의 위치, 확장자명을 설정
+      
+      	InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+      	viewResolver.prefix = "/WEB-INF/views/"
+       -->
+      <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      	
+      	<property name="prefix" value="/WEB-INF/views/"/>
+      	<property name="suffix" value=".jsp"/> <!-- 확장자 명 -->
+      
+      </bean>
+      
+      <!-- 공통 패키지(경로) -->
+      <context:component-scan base-package="mul.cam.food"/>
+      
+      
+      <!-- ajax 사용허가 -->
+      <mvc:annotation-driven/>
+      
+      
+      <!-- spring에서 처리 할수 없는 요청은 tomcat이 처리 -->
+      <mvc:default-servlet-handler/>
+      
+      <mvc:resources location="/resources/" mapping="/resources/**"/>
+      
+      </beans>
 

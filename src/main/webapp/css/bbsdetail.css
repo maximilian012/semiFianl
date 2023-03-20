@@ -1,0 +1,252 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #FFFAEF;
+}
+
+
+/*body 초기화*/
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;  
+}
+
+/* 상단 내비게이션 */
+
+nav {
+  width: 100%;
+  height: 75px;
+  display: inline-block;
+  line-height: 80px;
+  background: #fff;
+}
+
+#logo-img {
+    float: left;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #40514E;
+}
+
+#main-menu > li {
+  float: left;
+  position: relative;
+}
+
+#main-menu > li > a {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  display: block;
+  padding: 14px 36px;
+  border-right: 1px solid rgba(0,0,0,0.15);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+#main-menu > li:nth-child(1) > a {
+  border-left: 1px solid rgba(0,0,0,0.15);
+}
+
+#sub-menu {
+  position: absolute;
+  background-color: #FFEAB0;
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease-in;
+}
+
+#sub-menu > li {
+  padding: 0px 23px;
+  height: 56px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+#sub-menu > li >  a {
+  color: #40514E;
+  text-decoration: none;
+}
+
+a:hover {
+    color: #FFD26F;
+}
+
+.slide:hover #sub-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+#sub-menu > li >  a:hover {
+ text-decoration: underline;
+}
+
+.left-tab {
+    float: left;
+    width: 115px;
+}
+
+.right-tab{
+    float: right;
+    width: 115px;
+}
+
+/* 메인 이미지 */
+#main-image {
+    border-bottom: 1px solid #40514E;
+    width: 1170px;
+    height: 300px;
+    text-align: center;
+}
+#main-image > img {
+    margin-top: 47px;
+    height: 200px;
+    text-align: center;
+}
+
+/* 메인 컨텐츠 */
+#main-contents {
+    margin-top: 32px;
+    display: inline-block;
+}
+table {
+    border: 1px solid #40514E;
+}
+.recipe-wrapper {
+    width: 500px;
+    height: 300px;
+    float: left;
+}
+
+table td {
+    padding-left: 16px;
+}
+
+tr pre{
+    background: #fff;
+}
+
+#title {
+    border: none;
+    border-bottom: 1px solid #40514E;
+    width: 400px;
+    height: 26px;
+}
+
+.recipe-content {
+    width: 500px;
+    height: 380px;
+
+}
+.right {
+    margin-left: 150px;
+    float: right;
+}
+
+#bottom-wrapper {
+    display: block;
+}
+
+#bottom-table {
+    width: 1170px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+#stars {
+    border: none;
+    border-bottom: 1px solid #40514E;
+    width: 400px;
+    height: 26px;
+}
+.comment {
+    width: 500px;
+    height: 45px;
+}
+
+.commentBtn {
+    border: none;
+    background-color: inherit;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.commentBtn:hover{
+    color: #FFD26F;
+}
+
+#btn-wrapper {
+    margin: 23px;
+    text-align: center;
+}
+
+.listBtn {
+    border: none;
+    background-color: inherit;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.listBtn:hover{
+    color: #FFD26F;
+}
+
+.updateBtn {
+    border: none;
+    background-color: inherit;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.updateBtn:hover{
+    color: #FFD26F;
+}
+
+.deleteBtn {
+    border: none;
+    background-color: inherit;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.deleteBtn:hover{
+    color: #FFD26F;
+}
+
+.wrapper {
+	text-align: right;
+}
+
+/* 푸터 */
+footer {
+    width: 100%;
+    height: 75px;
+    display: inline-block;
+    line-height: 80px;
+    background: #fff;
+}
+
+footer p {
+    margin: 0;
+    margin-left: 110px;
+}

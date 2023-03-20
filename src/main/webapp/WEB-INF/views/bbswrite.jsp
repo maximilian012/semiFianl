@@ -46,7 +46,7 @@
 				id="navbarNavDropdown">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#">Home</a></li>
+						aria-current="page" href="bbslist.do">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
 
 					<li class="nav-item dropdown"><a
@@ -250,14 +250,20 @@
 		
 		</script>
 			<div class="pt-1 text-right">
+				<button class="btn btn btn-success" type="button" onclick="history.back()" 
+					style="width: 10%; padding: 5px;">목록보기</button>
+				<button class="btn btn btn-success" type="reset"
+					style="width: 10%; padding: 5px;">다시쓰기</button>
 				<button class="btn btn btn-success" type="submit"
 					style="width: 10%; padding: 5px;">작성완료</button>
-						<!-- fweewfewwefewffwe -->
 			</div>
 		</form>
 
+	
 	</main>
 	</div>
+	
+
 	
 	<div class="b-example-divider "></div>
 	<div class="container-fluid ">

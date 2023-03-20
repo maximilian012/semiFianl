@@ -24,10 +24,7 @@ public class AopProc {
 
 //	@Around("within(mul.cam.a.controller.*) or within(mul.cam.a.dao.*.*)")
 	@Around("within(mul.cam.food.controller.*)")
-	public Object loggerAop(ProceedingJoinPoint joinpoint) throws Throwable {
-		
-		
-		
+	public Object loggerAop(ProceedingJoinPoint joinpoint) throws Throwable {		
 		
 		// logger
 		String signatureStr = joinpoint.getSignature().toShortString(); // 감시자가 감시자 역할을 하다가 실행이 되면
@@ -42,4 +39,5 @@ public class AopProc {
 			//System.out.println("After operation: ");
 		}
 	}
+	//fgsdfgsdfgsdf
 }
