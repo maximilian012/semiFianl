@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
-
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,25 +61,51 @@ public class BbsServiceImpl implements BbsService {
 		return jsonObject;
 	}
 
+	// 상세보기
 	@Override
-	public BbsDto getBbs(int seq) {		
-		return dao.getBbs(seq);
+	public BbsDto detailBbs(int seq) {		
+		return dao.detailBbs(seq);
 	}
 
+	// 게시판 수정
 	@Override
-	public boolean commentWrite(BbsComment bbs) {
+	public boolean updateBbs(BbsDto dto) {		
+		int n = dao.updateBbs(dto);
+		return n>0?true:false;
+	}
+	
+	// 게시판 삭제
+	@Override
+	public boolean deleteBbs(int seq) {		
+		int n = dao.deleteBbs(seq);
+		return n>0?true:false;
+	}
+	
+	// 댓글 쓰기
+	@Override
+	public boolean commentWrite(BbsComment bbs) {	
 		int n = dao.commentWrite(bbs);
 		return n>0?true:false;
 	}
 	
+	// 댓글 목록
 	@Override
-	public List<BbsComment> commentList(int seq) {
+	public List<BbsComment> commentList(int seq) {	
 		return dao.commentList(seq);
 	}
 	
+	// 댓글 수정
 	@Override
-	public boolean updateBbs(BbsDto dto) {
-		int n = dao.updateBbs(dto);
+	public boolean updateComment(BbsComment bbs) {
+		int n = dao.updateComment(bbs);
 		return n>0?true:false;
 	}
+	
+	// 댓글 삭제
+	@Override
+	public boolean deleteComment(BbsComment bbs) {
+		int n = dao.deleteComment(bbs);
+		return n>0?true:false;
+	}
+
 }
