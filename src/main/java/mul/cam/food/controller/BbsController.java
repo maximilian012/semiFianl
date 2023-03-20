@@ -3,6 +3,7 @@ package mul.cam.food.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,28 +36,31 @@ public class BbsController {
 	BbsService service;
 
 	@GetMapping(value = "bbslist.do")
-	public String bbslist(Model model) {
+	public String bbslist(Model model, String auth, MemberDto dto) {
 		
+		dto.setAuth(auth);
 		List<BbsDto> list = service.testlist();
+		//List<MemberDto> mdto = service.bringDelflg(dto);
+		System.out.println("auth야 나오니? " + dto.getAuth());
 		model.addAttribute("testlist", list); // 게시판 리스트
-		
+		model.addAttribute("dto", dto);	
 		return "testlist";
 	}
 	
 	
 	
 	@GetMapping(value = "bbswrite.do")
-	public String bbswrite() {
-		
+	public String bbswrite(String auth) {
+		//System.out.println("맨처음 auth: " + auth);
 		return "bbswrite";
 	}
 	
 	@PostMapping(value = "bbswriteAF.do")
 	public String bbswriteAf(Model model, BbsDto dto) {
+		
 		System.out.println("wrtier : " + dto.getWriter());
 		System.out.println("content : " + dto.getContent());
 		System.out.println("thumbnail : " + dto.getThumbnail());
-		
 		boolean b =  service.bbswrite(dto);
 		String bbswrite = "";
 		if (b) {
@@ -68,23 +72,6 @@ public class BbsController {
 		
 		return "message"; // controller 에서 controller로 이동 redirect:/bbslist.do, forward
 	}
-	
-	@PostMapping(value = "login.do")
-	public String foodinsert(BbsDto food, Model model) {				
-		boolean b  = service.writeBbs(food);
-		String bbswrite = "";
-		if (b) {
-			bbswrite = "writeOK";
-		}else {
-			bbswrite = "writeNO";
-		}
-		model.addAttribute("bbswrite", bbswrite);
-		
-		return "message"; // controller 에서 controller로 이동 redirect:/bbslist.do, forward
-	}
-	
-	
-	
 	
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String login() {
@@ -99,22 +86,50 @@ public class BbsController {
 		MemberDto mem = service.loginAf(dto);
 		
 		String loginOK = "";
-		if (mem != null) {
+		if (mem != null&& !mem.getDelflg().equals("0")) {
 			 req.getSession().setAttribute("login", mem);
 			// req.getSession().setMaxInactiveInterval(60 * 60 * 60 * 60);
 			 
 			 loginOK = "BBS_ADD_OK"; // 로그인 성공
 			
-		}else {
-			 loginOK = "BBS_ADD_NO";
+		}else if(mem != null && mem.getDelflg().equals("0")) {
 			
+			 loginOK = "Withdrawal member";
+			 
+		}else {
+			
+			loginOK = "BBS_ADD_NO";
 		}
 		model.addAttribute("loginOK", loginOK);
 		
 		model.addAttribute("mem", mem);
 		
+	
 		return "message";
 	}
+	
+	@GetMapping(value = "bbsdetail.do")
+	public String bbsdetail(Model model, int seq) {
+		System.out.println("BbsController bbsdetail " + new Date());
+		BbsDto dto = service.getBbs(seq);
+		model.addAttribute("bbsdto", dto);
+		
+		return "bbsdetail";
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	@ResponseBody

@@ -15,9 +15,9 @@
 	
 	<insert id="bbswrite" parameterType="mul.cam.food.dto.BbsDto">
 	
-		insert into recipe(writer, title, thumbnail, content, ingredients, cookingtime, serving , category, regdate, star, tag)
+		insert into recipe(writer, title, thumbnail, content, ingredients, cookingtime, serving , category, regdate, star, tag, delf)
 				 values(#{writer}, #{title}, #{thumbnail},
-				  #{content}, #{ingredients}, #{cookingtime}, #{serving}, #{category}, now(), #{star}, #{tag}) 
+				  #{content}, #{ingredients}, #{cookingtime}, #{serving}, #{category}, now(), #{star}, #{tag}, '1') 
 	
 	</insert>
 	
@@ -26,25 +26,20 @@
 		select * from user where user_id = #{user_id} and password=#{password}
 	
 	</select>
+	<!-- delflg갖고오기 -->
+		<select id="bringDelflg" resultType="mul.cam.food.dto.MemberDto" >
+	select * from user;
 	
 	
+	</select>
 	
 	
-	
-	<insert id="writeBbs" parameterType="mul.cam.food.dto.BbsDto">
-	insert into recipe(writer, thumbnail, title, content, ingredients, cookingtime, serving, category, regdate, star, tag)
-	values(#{writer}, #{thumbnail},#{title}, #{content}, #{ingredients}, #{cookingtime}, #{serving}, #{category}, now(),
-			#{star}, #{tag})	
-	</insert>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<select id="getBbs" parameterType="Integer"
+		resultType="mul.cam.food.dto.BbsDto">
+		select thumbnail ,title, content, tag
+		from recipe
+		where
+		seq=#{seq}
+	</select>
 	
 	</mapper>

@@ -32,14 +32,19 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	public MemberDto loginAf(MemberDto dto) {
 		
-		return  session.selectOne(ns + "loginAf", dto);
+		return session.selectOne(ns + "loginAf", dto);
+	}
+	@Override
+	public List<MemberDto> bringDelflg(MemberDto dto) {
+		
+		return session.selectList(ns + "bringDelflg", dto);
+	}
+	@Override
+	public BbsDto getBbs(int seq) {
+		
+		return session.selectOne(ns + "getBbs", seq);
 	}
 
-	@Override
-	public int writeBbs(BbsDto food) {		
-		return session.insert(ns + "writeBbs", food);
-	}
-	
 	
 
 }

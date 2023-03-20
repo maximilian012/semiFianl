@@ -1,3 +1,4 @@
+<%@page import="mul.cam.food.dto.MemberDto"%>
 <%@page import="mul.cam.food.dto.BbsDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,6 +16,8 @@
 
 
 List<BbsDto> list = (List<BbsDto>)request.getAttribute("testlist");
+MemberDto dtos = (MemberDto)request.getAttribute("dto");
+MemberDto login = (MemberDto)session.getAttribute("login");	
 %>
 <h3>게시판2222</h3>
 <table class="table table-hover table-sm" style="width: 1000px">
@@ -38,8 +41,29 @@ if(list == null || list.size() == 0){
 	for(int i = 0;i < list.size(); i++)
 	{
 		BbsDto dto = list.get(i);
+		if(dto.getDelf().equals("0")){
+		
+		%>
+			<tr>
+				<td>
+						<img alt="" src="./images/x.png">
+				</td>
+				<td style="color: red">
+						*********이글은 관리자에 의해 삭제되었습니다.
+				</td>
+			</tr>	
+		
+		<%
+		}else{
 		%>
 		<tr>
+				<td>
+				
+					
+					<h3 onclick="location.href = 'bbsdetail.do?seq=<%=dto.getSeq() %>'"><%=dto.getWriter() %></h3>
+						
+					
+				</td>
 				<td>
 				
 					<a>
@@ -60,18 +84,33 @@ if(list == null || list.size() == 0){
 						
 				
 				<%
+	
 			}	
 			%>
 		</tr>
+		
+		
+		<%	
+		}
+		%>
+		
 		<%
-	}
+			}
 
-%>
+			%>
 
 </tbody>
 </table>
 <br><br>
 <a href="bbswrite.do">글쓰기</a>
+
+<%
+if(login.getAuth().equals("1")){
+%>
+<a href="adminList.do">회원관리</a>
+<%	
+}
+%>
 
 </body>
 </html>

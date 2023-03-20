@@ -2,6 +2,7 @@ package mul.cam.food.service.impl;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,10 +37,17 @@ public class BbsServiceImpl implements BbsService {
 	}
 
 	@Override
-	public boolean writeBbs(BbsDto food) {
-		int n = dao.writeBbs(food);
-		return n>0?true:false;
+	public List<MemberDto> bringDelflg(MemberDto dto) {
+		
+		return dao.bringDelflg(dto);
 	}
+
+	@Override
+	public BbsDto getBbs(int seq) {
+		
+		return dao.getBbs(seq);
+	}
+
 
 
 

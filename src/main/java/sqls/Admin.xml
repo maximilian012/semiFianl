@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="Admin">
+		    
+
+	
+		<!-- 처음에 목록 뿌려주는거 -->
+		<select id="getAdminList" parameterType="mul.cam.food.dto.AdminParam" resultType="mul.cam.food.dto.MemberDto">
+		
+		select seq, user_id, password, name, age, address, regdate, delflg, auth
+	 from 
+		(select row_number()over(order by regdate desc) as rnum,
+			seq, user_id, password, name, age, address, regdate, delflg, auth
+		 from user
+		 where 1=1  
+			<if test="choice != null and choice != '' and search != null and search != ''">
+				<if test="choice == 'name'">
+					and name like concat('%', #{search}, '%')
+				
+				</if>
+			
+				<if test="choice == 'user_id'">
+				
+					and user_id=#{search}
+				
+				</if>
+			</if>
+			
+			order by regdate desc) a
+			where rnum between ${start} and ${end}   <!-- 숫자는 $, 문자열은 # -->
+			
+	
+		</select>
+	
+		<!--글의 총수   -->
+	<select id="getAllAdmin" parameterType="mul.cam.food.dto.AdminParam" resultType="Integer">
+	
+		select ifnull(count(*), 0)
+		from user 
+		<if test="choice != null and choice != '' and search != null and search != ''">
+				<if test="choice == 'name'">
+					where name like concat('%', #{search}, '%')
+				
+				</if>
+		
+				<if test="choice == 'user_id'">
+				
+					where user_id=#{search}
+				
+				</if>
+			</if>
+	
+	</select>
+	
+	<!--회원 삭제인데 삭제안하고 delflg를 0으로 update  -->
+	
+	<update id="adminDel">
+	
+	update user set delflg = 0 where seq = #{seq}
+	
+	</update>
+	
+	<!--recipe 테이블의 delf를 0으로 update하고 게시글에서 delf가 0인것은 삭제된 것 처럼 보여주기  -->
+	
+	<update id="delfUp">
+	
+	update recipe set delf = 0 where writer = #{writer}
+	
+	</update>
+	
+	
+	
+	<!--아이디 모달 보여주기  -->
+	<select id="getInfo" parameterType="String" resultType="mul.cam.food.dto.MemberDto">
+	
+	select * from user where user_id = #{user_id}
+	
+	</select>
+	
+	<!-- 게시글 모달 보여주기 -->
+	<select id="getListCnt" parameterType="String" resultType="mul.cam.food.dto.BbsDto">
+	
+	select * from recipe where writer = #{writer}
+	
+	</select>
+	
+	<!-- 댓글 모달 보여주기 -->
+	<select id="getComentCnt" parameterType="String" resultType="mul.cam.food.dto.BbsComment">
+	
+	select * from reply where writer = #{writer}
+	
+	</select>
+	
+	
+	</mapper>

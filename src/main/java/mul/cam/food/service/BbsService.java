@@ -17,7 +17,10 @@ public interface BbsService {
 
 	MemberDto loginAf(MemberDto dto);
 
-	boolean writeBbs(BbsDto food);
+	List<MemberDto> bringDelflg(MemberDto dto);
+
+	BbsDto getBbs(int seq);
+
 
 	
 	
