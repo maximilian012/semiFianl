@@ -1,200 +1,204 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<meta name="description" content="">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.108.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HOME BOB : 로그인 창</title>
 
+<%-- css 로드 --%>
+<link rel="stylesheet" type="text/css" href="./css/login.css" >
 
+<%-- jQuery --%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<%-- 부트스트랩 --%>
+<%-- 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+--%>
 
+<%-- cookie 저장 --%>
+<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-<script src="http://lab.alexcican.com/set_cookies/cookie.js"
-	type="text/javascript"></script>
-	
-	
-	
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-
-
-<style type="text/css">
-
-.divider:after,
-.divider:before {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: #eee;
-}
-.h-custom {
-  height: calc(100% - 73px);
-}
-@media (max-width: 450px) {
-  .h-custom {
-    height: 100%;
-  }
-}
-
-
-</style>
 </head>
 <body>
 
-	<section class="vh-100">
-		<div class="container-fluid h-custom">
-			<div class="row d-flex justify-content-center align-items-center h-100">
-				<div class="col-md-9 col-lg-6 col-xl-5">
-					<img
-						src="https://www.multicampus.com/kr/images/main/2021/tab-image3.jpg"
-						class="img-fluid" alt="Sample image">
-				</div>
-	<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-	<form action="loginAf.do" method="post">
-	<div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-            <p class="lead fw-normal mb-0 me-3">Sign in with</p>            
+<div class="container">
+  <div class="welcome">
+    <div class="pinkbox">
+    
+      <div class="signup nodisplay">
+      
+      	<h1>register</h1>
+      	
+      	<form action="regiAf.do" method="post" autocomplete="off">
+      	  <div class="id_check_button">
+          	<input type="text" id="id" name="user_id" placeholder="아이디">
+          	<button type="button" id="idChkBtn">중복 체크</button>
           </div>
-
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Or</p>
+          <p id="idcheck" style="display:none;"></p> 
+          <input type="password" id="pwd" name="password" placeholder="비밀번호">
+          <input type="password" id="pwd_2" placeholder="비밀번호 확인">
+          <div class="personal_class">
+	          <input type="text" id="name" name="name" class="personal" placeholder="이름">
+	          <input type="text" id="age" name="age" class="personal" placeholder="나이">
           </div>
-	<!-- id input -->
-          <div class="form-outline mb-4">
-            <input type="text" id="user_id" name="user_id" class="form-control form-control-lg"
-              placeholder="Enter a valid id" />
-          </div>
-		
-		<!-- Password input -->
-          <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" name="password" class="form-control form-control-lg"
-              placeholder="Enter password" />
-          </div>
-	
-		<div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="chk_save_id" />
-              <label class="form-check-label" for="form2Example3">
-                Remember me
-              </label>
-            </div>
-            <a href="#!" class="text-body">Forgot password?</a>
-          </div>
-          
-          
-		<div class="text-center text-lg-start mt-4 pt-2">
-            <button type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-              
-            
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
-             <a href="#" onclick="account()" class="link-danger">Register</a></p>
-          </div>
-	
-		
-	</form>
-	
-	
-	</div>
-
+          <input type="email" id="email" name="email" placeholder="이메일">
+          <input type="text" id="address" name="address" placeholder="주소">
+          <button type="submit" id="create_id" class="button submit">회원가입</button>
+        </form>
+	  </div>
+	  
+	  <div class="signin">
+	  	<h1>sign in</h1>
+	  	<form action="loginAf.do" method="post" class="more-padding" autocomplete="off">
+			<input type="text" id="id" name="user_id" placeholder="아이디">
+			<input type="text" id="pwd" name="password" placeholder="패스워드">
+         	<div class="checkbox">
+				<input type="checkbox" id="chk_save_id" class="checkbox">
+				<label for="chk_save_id">remember me</label>
 			</div>
-
-		</div>
-
-
-
-<div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Copyright ©️ 2021. MultiCampus.
-    </div>
-    <!-- Copyright -->
-
-    <!-- Right -->
-    <div>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="#!" class="text-white">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </div>
-
-
-	</section>
-
-
-	<script type="text/javascript">
-	
-	function account(){
-		
-		location.href="regi.do";
-	}
-	
-	
-	
-	
-		/*  
-		    cookie : id저장 (다시 화면 띄워도 아이디 존재) == String     client
-		    session : login한 정보 ==Object                       server
 			
-		 */
+			<button type="submit" id="login"  class="button submit">로그인</button>
+			<button type="button" id="find_id"  class="button">아이디/패스워드 찾기</button>
+		</form>
+	  </div>
+     </div>
+    <div class="leftbox">
+      <a href="mainhome.do"><img class="logo" src="./images/homebob.png"/></a>
+      <p class="desc">회원님의 <span>"HomeBOB"</span>을</p>
+      <p>책임지겠습니다.</p>
+      <p class="account">have an account?</p>
+      <button id="signin" class="button">login</button>
+    </div>
+    <div class="rightbox">
+       <a href="mainhome.do"><img class="logo" src="./images/homebob.png"/></a>
+      <p class="desc">회원님의 <span>"HomeBOB"</span>을</p>
+      <p>책임지겠습니다.</p>
+      <p class="account">don't have an account?</p>
+      <button id="signup" class="button">sign up</button>
+    </div>
+ </div>
+</div>
+    
 
-		let user_id = $.cookie("user_id");
+<script type="text/javascript">
+$(function() {
+	
+	$('#signup').click(function() {
+		  $('.pinkbox').css('transform', 'translateX(80%)');
+		  $('.signin').addClass('nodisplay');
+		  $('.signup').removeClass('nodisplay');
+	});
 
-		if (user_id != null) { // 저장한 id 가 있음
-			$("#id").val(user_id); // 아이디 넣기
-			$("#chk_save_id").prop("checked", true); // checkbox 켜두기
-
-		}
-
-		$("#chk_save_id").click(function() {
-			// is() 선택한 요소에서 주어진 선택자가 있는지 판별
-			// id요소가 #chk_save_id인 것에서 checked가 되어있다면 true를 반환
-			if ($("#chk_save_id").is(":checked") == true) { // 클릭했을때
-				//alert('true');
-				if ($("#id").val().trim() == "") { // 아이디 기입 안했을때
-					//alert('put it id');
-					$("#chk_save_id").prop("checked", false); // 체크 안해줌 ********수정된 요소의 값을 가져오는데는 prop()사용해라
-				} else {
-
-					//cookie를 저장
-					$.cookie("user_id", $("#id").val().trim(), {
-						expireds : 7,
-						path : './'
-					});
+	$('#signin').click(function() {
+	  $('.pinkbox').css('transform', 'translateX(0%)');
+	  $('.signup').addClass('nodisplay');
+	  $('.signin').removeClass('nodisplay');
+	});
+	
+	/* 회원 가입 부분 */
+	// id 중복체크
+	$("#idChkBtn").click(function() {		
+			
+		$.ajax({
+			type:"post",
+			url:"idcheck.do",
+			data:{ "id":$("#id").val() },
+			success:function(msg){				
+				if(msg == "YES"){
+					// 빈 칸 방지
+					if ($("#id").val().trim() == ""){
+						alert("아이디를 입력하십시오.");
+					}else{
+						$("#idcheck").css("color", "#0000ff");
+						$("#idcheck").text("사용할 수 있는 아이디입니다");
+						$("#idcheck").show();
+					}
+				}else{
+					$("#idcheck").css("color", "#ff0000");
+					$("#idcheck").text("사용중인 아이디입니다");
+					$("#idcheck").show();
+					$("#id").val("");
 				}
-
-			} else { // 클릭해제
-				//alert('false');
-				$.removeCookie("user_id", {
-					path : './'
-				}); // 클릭해제하면 쿠키 삭제됨
+			},
+			error:function(){
+				alert('error');
 			}
-
 		});
-	</script>
+	});
+	
+	// 회원가입 버튼
+	$("#create_id").click(function(event){
+		
+		// 빈 칸이 있으면 알림
+	    if ($("#id").val().trim() == "" || $("#pwd").val().trim() == "" || $("#pwd_2").val().trim() == "" || $("#name").val().trim() == "" || $("#age").val().trim() == "" || $("#address").val().trim() == "") {
+	      alert("빈 칸을 모두 채워주세요.");
+	      event.preventDefault(); // submit 버튼 취소
+	      return false; // 함수 실행 중지
+	    }
+		
+		// pwd 확인
+		if($("#pwd").val() != $("#pwd_2").val() ){
+			alert("비밀번호를 확인해주세요.");
+			
+			$("#pw").val("").focus();
+			$("#pw2").val("");
+			
+			// 기본 동작 취소 함수
+			event.preventDefault();	// submit 버튼 취소
+			
+			return false;	// 함수 실행 중지
+		};
+		<%-- 비밀번호 자릿 수 설정 
+			}else if ($("#pw").val().length < 8) {
+				alert("비밀번호는 8자 이상으로 설정해야 합니다.");
+				$("#pw").val("").focus();
+				return false;} --%> 
+		
+	});
+		
+	// 아이디/비번 찾기로 이동
+	$("#find_id").click(function() {
+		location.href = "find.do";		
+	});
+	
+	// 쿠키 값 저장, 쿠키 없으면 null
+	let user_id = $.cookie("user_id");
+
+	if(user_id != null){	// 저장한 id가 있음
+		$("#id").val(user_id);
+		$("#chk_save_id").prop("checked", true);
+	};
+
+	$("#chk_save_id").click(function () {
+		
+		if( $("#chk_save_id").is(":checked") == true ){
+			
+			if( $("#id").val().trim() == "" ){
+				alert('id를 입력해 주십시오');
+				$("#chk_save_id").prop("checked", false);
+			}else{
+				// cookie를 저장
+				$.cookie("user_id", $("#id").val().trim(), { expires:7, path:'./' });	// expires 만료 날짜, ./ 현재 경로
+			}
+			
+		}else{
+			$.removeCookie("user_id", { path:'./' });
+		}	
+	});
+});
+</script>
+
+
 
 
 </body>
